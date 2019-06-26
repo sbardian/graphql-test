@@ -28,4 +28,4 @@ And the frontend developer is counting on you to implement the following operati
 4. This repo should be an npm project such that we can install the dependencies that you define for the server in order to run it using Node.
 
 ## NOTE
-If you are not storing the data in-memory, please commit a sql dump of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be discarded if you **DO NOT** include a sql dump for your implementation that uses a database.
+If you are not storing the data in-memory, please commit a sql dump of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be discarded if you **DO NOT** include a sql dump for your implementation if it uses a database.
