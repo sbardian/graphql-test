@@ -16,7 +16,8 @@ priority     | Number
 And frontend developer is counting on you to implement the following operations:
 1. Get a a list of todos
 2. Create todo
-3. Update todo
+3. Update todo description
+4. Mark todo complete
 4. Delete todo
 
 ## Instructions
