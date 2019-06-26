@@ -14,7 +14,7 @@ createdAt    | Date          | Tells us when the todo was created. Defaults to c
 completed    | Boolean       | Indicates if the todo is complete. Defaults to false.
 priority     | Int           | 1 is the highest priority. Defaults to 1.
 
-And the frontend developer is counting on you to implement the following operations in the graphql backend:
+And the frontend developer is counting on you to implement the following operations in the GraphQL api:
 1. **List Todos** - Retrieved todos can be sorted by the `priority`, `createdAt`, or `description` fields in ascending or descending order. There is no sorting by default. And the todos can also be filtered by the `completed` field.
 2. **Create todo** - `description` is required. `priority` is optional and should default to 1. The rest of the fields: `id`, `createdAt`, and `completed` should have defaults supplied for them 
 3. **Update todo** - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
