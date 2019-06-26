@@ -1,4 +1,4 @@
-# MadeByCodera GraphQL Exercise
+# MadeByCodera GraphQL Test
 
 ## Description
 
