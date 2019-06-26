@@ -3,7 +3,7 @@
 ## Description
 
 You are tasked with writing the GraphQL api for a new Todo List mobile app.
-The initial structure of the Todo according to the frontend developer should look this:
+The structure of the Todo according to the frontend developer should look this:
 
 Field        | Data Type
 ------------ | -------------
@@ -13,7 +13,7 @@ createdAt    | Date
 done         | Boolean
 priority     | Number
 
-And frontend developer is counting on you to implement the following operations:
+And the frontend developer is counting on you to implement the following operations:
 1. Get a a list of todos
 2. Create todo
 3. Update todo description
