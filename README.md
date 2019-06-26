@@ -26,6 +26,7 @@ And the frontend developer is counting on you to implement the following operati
 2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 3. You can use whatever data structure you are most comfortable with for storing the data such as in-memory, MySQL, Postgres, SQLite, MongoDB, etc... . Using Postgres is preferred and considered a plus, since that is what we use currently.
 4. This repo should be an npm project such that we can install the dependencies that you define for the server in order to run it using Node.
+5. Adding graphql comments to the Types, Mutations, and Queries is also considered a plus. 
 
 ## NOTE
 If you are not storing the data in-memory, please commit a sql dump of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be discarded if you **DO NOT** include a sql dump for your implementation if it uses a database.
