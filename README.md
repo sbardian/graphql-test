@@ -35,6 +35,8 @@ The front end developer would also like a little bit of documentation to help hi
 
 This will make it very easy for the frontend developer to see them when inspecting the running GraphQL server using [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/features/graphql-playground/)
 
+
+
 ## Instructions
 1. Fork this repository. Do all of your work on your personal fork.
 2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
