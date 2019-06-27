@@ -3,9 +3,10 @@
 ## Description
 
 You are tasked with writing the GraphQL api for a new Todo List mobile app.
-The structure of the Todo GraphQL Type according to the frontend developer should look like the following:
 
 ### Todo GraphQL Type
+The structure of the Todo GraphQL Type according to the frontend developer should look like the following:
+
 Field        | Data Type     | Description
 ------------ | ------------- | -------------
 id           | UUID          | Unique identifier for the todo.
@@ -14,12 +15,15 @@ createdAt    | Date          | Tells us when the todo was created. Defaults to c
 completed    | Boolean       | Indicates if the todo is complete. Defaults to false.
 priority     | Int           | 1 is the highest priority. Defaults to 1.
 
+### Todo GraphQL Query and Mutations
 And the frontend developer is counting on you to implement the following 5 methods under the GraphQL api endpoint:
 1. **List Todos** - Query - Retrieved todos can be sorted by the `priority`, `createdAt`, or `description` fields in ascending or descending order. By default the todos are unsorted. In addition, the todos can be filtered by the `completed` field.
 2. **Create todo** - Mutation - `description` is required. `priority` is optional and if not provided should default to 1. The rest of the fields: `id`, `createdAt`, and `completed` should have defaults supplied for them as noted in the Todo GraphQL Type mentioned above.
 3. **Update todo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
 4. **Mark todo complete** - Mutation - Should update a todo's `complete` field to `true` based on the `id` provided in the request.
 4. **Delete todo** - Mutation - Should delete a todo based on the `id` provided in the request.
+
+### Documentation
 
 The front end developer would also like a little bit of documentation to help him use the api. The easiest way to provide documentation is to add comments to each query, mutation, and type that is defined in the GraphQL schema. The following multi-line comments example highlights how you should be declaring comments in the query, mutation, or type definitions:
 
