@@ -40,7 +40,7 @@ As demonstrated in the following screenshot
 [![graphql-playground-example.png](https://i.postimg.cc/rw6HMzmt/graphql-playground-example.png)](https://postimg.cc/VdRgFfXY)
 
 ## Instructions
-1. Fork this repository. Do all of your work on your personal fork. Then creat a new pull request on your personal fork
+1. Fork this repository. Do all of your work on your personal fork. Then create a new pull request on your personal fork
 2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 3. You can use whatever data structure you are most comfortable with for storing the data such as in-memory, MySQL, Postgres, SQLite, MongoDB, etc... . Using Postgres is preferred and considered a plus, since that is what we use currently.
 4. This repo should be an npm project such that we can install the dependencies that you define for the server in order to run it using Node.
