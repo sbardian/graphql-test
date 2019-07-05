@@ -39,6 +39,12 @@ As demonstrated in the following screenshot
 
 [![graphql-playground-example.png](https://i.postimg.cc/rw6HMzmt/graphql-playground-example.png)](https://postimg.cc/VdRgFfXY)
 
+### Testing
+
+The front end developer would also like to see examples of using this GraphQL api to help him make his own requests, as well as show to him that the api will work as he expects. You may do this however you see fit. The simplest way possible would be to write variations of query and mutation requests in GraphQL Playground and then click `COPY CURL`, pasting the curl command into a shell script that you could provide at the root of the repo called `test.sh`.
+
+[![graphql-test-copy-curl-example.png](https://i.postimg.cc/8c0vxzyb/graphql-test-copy-curl-example.png)](https://postimg.cc/BP2tK4f8)
+
 ## Instructions
 1. Fork this repository. Do all of your work on your personal fork. Then create a new pull request on your personal fork
 2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
