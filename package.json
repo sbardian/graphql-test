@@ -1,0 +1,61 @@
+{
+  "name": "graphql-test",
+  "version": "1.0.0",
+  "description": "GraphQL TODO API",
+  "main": "src/index.js",
+  "repository": "https://github.com/sbardian/graphql-test.git",
+  "author": "Brian Andrews <sbardian@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "cm": "git-cz",
+    "start": "node dist/index.js",
+    "dev": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 npx nodemon -e js,json,graphql --exec babel-node src/index.js",
+    "lint": "eslint . ",
+    "build": "yarn build:server",
+    "build:server": "babel src -d dist --source-maps --ignore \"**/*.test.js\""
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "apollo-server": "2.16.1",
+    "apollo-server-express": "2.16.1",
+    "bunyan": "^1.8.14",
+    "dataloader": "2.0.0",
+    "express": "4.17.1",
+    "express-jwt": "6.0.0",
+    "faker": "^5.1.0",
+    "graphql": "15.3.0",
+    "mongodb-memory-server": "6.6.3",
+    "mongoose": "5.9.28",
+    "subscriptions-transport-ws": "0.9.17"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.11.1",
+    "@babel/node": "7.10.5",
+    "@babel/preset-env": "7.11.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "26.2.2",
+    "babel-plugin-inline-import": "3.0.0",
+    "babel-plugin-source-map-support": "2.1.2",
+    "commitizen": "^4.2.1",
+    "commitlint": "^11.0.0",
+    "cross-env": "7.0.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "7.6.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.22.0",
+    "husky": "4.2.5",
+    "jest": "26.2.2",
+    "jest-environment-node": "26.2.0",
+    "lint-staged": "^10.3.0",
+    "nodemon": "2.0.4",
+    "prettier": "2.0.5"
+  }
+}
