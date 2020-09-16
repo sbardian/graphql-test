@@ -8,19 +8,23 @@ export const updateTodo = async (
   { models: { Todo } },
 ) => {
   let updatedTodo
-  if (!description) {
+  if (!description && priority) {
     updatedTodo = returnTodo(
       await Todo.findByIdAndUpdate(id, { priority }, { new: true }),
     )
-  }
-  if (!priority) {
+  } else if (!priority && description) {
     updatedTodo = returnTodo(
       await Todo.findByIdAndUpdate(id, { description }, { new: true }),
     )
+  } else {
+    updatedTodo = returnTodo(
+      await Todo.findByIdAndUpdate(
+        id,
+        { description, priority },
+        { new: true },
+      ),
+    )
   }
-  updatedTodo = returnTodo(
-    await Todo.findByIdAndUpdate(id, { description, priority }, { new: true }),
-  )
   pubsub.publish(TODO_UPDATED, {
     todoUpdated: {
       ...updatedTodo,
