@@ -1,9 +1,11 @@
+import { withFilter } from 'apollo-server'
 import { pubsub } from '../../../server/pubsub'
 import { TODO_UPDATED } from '../iterators'
 
 export default {
-  resolve: (payload) => {
-    return payload.listDeleted
-  },
-  subscribe: () => pubsub.asyncIterator([TODO_UPDATED]),
+  resolve: (payload) => payload.todoUpdated,
+  subscribe: withFilter(
+    () => pubsub.asyncIterator([TODO_UPDATED]),
+    (payload, variables) => payload.todoUpdated.todo === variables.id,
+  ),
 }

@@ -10,16 +10,18 @@ export const createNewTodo = async (
   if (!description) {
     throw new Error('A description is required')
   }
-  const newTodo = await Todo.create({
-    description,
-    priority,
-    completed,
-  })
+  const newTodo = returnTodo(
+    await Todo.create({
+      description,
+      priority,
+      completed,
+    }),
+  )
   pubsub.publish(TODO_ADDED, {
     todoAdded: {
       ...newTodo,
       __typename: 'Todo',
     },
   })
-  return returnTodo(newTodo)
+  return newTodo
 }

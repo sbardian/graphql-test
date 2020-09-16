@@ -54,15 +54,19 @@ type Query {
 
 type Subscription {
   """
-  Subscribe to updates todos being added
+  Subscribe to todos being added
   """
   todoAdded: Todo
   """
-  Subscribe to updates todos being deleted
+  Subscribe to todos being deleted
   """
   todoDeleted: Todo
   """
-  Subscribe to updates todos being updated
+  Subscribe to todos updates
   """
   todoUpdated: Todo
+  """
+  Subscribe to todos status updates
+  """
+  todoStatusUpdated: Todo
 }

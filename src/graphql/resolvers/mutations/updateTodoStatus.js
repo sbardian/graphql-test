@@ -1,21 +1,20 @@
+import { returnTodo } from '../../../database/utils/utils'
 import { pubsub } from '../../../server/pubsub'
-import { TODO_UPDATED } from '../iterators'
+import { TODO_STATUS_UPDATED } from '../iterators'
 
 export const updateTodoStatus = async (
   root,
   { TodoInfo: { id, completed } },
   { models: { Todo } },
 ) => {
-  const todoUpdated = await Todo.findByIdAndUpdate(
-    id,
-    { completed },
-    { new: true },
+  const todoStatusUpdated = returnTodo(
+    await Todo.findByIdAndUpdate(id, { completed }, { new: true }),
   )
-  pubsub.publish(TODO_UPDATED, {
-    todoUpdated: {
-      ...todoUpdated,
+  pubsub.publish(TODO_STATUS_UPDATED, {
+    todoStatusUpdated: {
+      ...todoStatusUpdated,
       __typename: 'Todo',
     },
   })
-  return todoUpdated
+  return todoStatusUpdated
 }

@@ -7,6 +7,7 @@ import { deleteTodo } from './mutations/deleteTodo'
 import todoAdded from './subscriptions/todo-added'
 import todoDeleted from './subscriptions/todo-deleted'
 import todoUpdated from './subscriptions/todo-updated'
+import todoStatusUpdated from './subscriptions/todo-status-updated'
 
 const resolvers = {
   Query: {
@@ -22,6 +23,7 @@ const resolvers = {
     todoAdded,
     todoDeleted,
     todoUpdated,
+    todoStatusUpdated,
   },
 }
 
