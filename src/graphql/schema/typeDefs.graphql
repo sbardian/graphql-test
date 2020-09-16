@@ -24,7 +24,25 @@ input UpdateTodoStatus {
   completed: Boolean!
 }
 
+input OrderByInput {
+  priority: SortOrder
+  description: SortOrder
+  created_at: SortOrder
+}
+
 scalar Date
+
+enum SortOrder {
+  """
+  ascending order (0-9, A-Z)
+  """
+  ASC
+
+  """
+  descending order (Z-A, 9-0)
+  """
+  DESC
+}
 
 type Mutation {
   """
@@ -47,9 +65,16 @@ type Mutation {
 
 type Query {
   """
-  Gets the current todos
+  Gets the current todos.
+
+  orderBy: Expects an array of objects, order of orderBy is respected.
+  For example `[{ priority: ASC }, { description: DESC }, { created_at: ASC}]`
+  will first order by `priority` (ASC), `description` (DESC),
+  and finally `created_at` (ASC).
+
+  completed: Expects a boolean.  Will filter todos based on their completed status.
   """
-  getTodos: [Todo]
+  getTodos(orderBy: [OrderByInput], completed: Boolean): [Todo]
 }
 
 type Subscription {
