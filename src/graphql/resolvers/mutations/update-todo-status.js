@@ -1,6 +1,6 @@
 import { returnTodo } from '../../../database/utils/utils'
 import { pubsub } from '../../../server/pubsub'
-import { TODO_STATUS_UPDATED } from '../iterators'
+import { TODO_STATUS_UPDATED } from '../events'
 
 export const updateTodoStatus = async (
   root,

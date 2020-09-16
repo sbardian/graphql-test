@@ -1,6 +1,6 @@
 import { withFilter } from 'apollo-server'
 import { pubsub } from '../../../server/pubsub'
-import { TODO_DELETED } from '../iterators'
+import { TODO_DELETED } from '../events'
 
 export default {
   resolve: (payload) => payload.todoDeleted,

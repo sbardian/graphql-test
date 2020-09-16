@@ -1,6 +1,6 @@
 import { returnTodo } from '../../../database/utils/utils'
 import { pubsub } from '../../../server/pubsub'
-import { TODO_DELETED } from '../iterators'
+import { TODO_DELETED } from '../events'
 
 export const deleteTodo = async (root, { id }, { models: { Todo } }) => {
   const deletedTodo = returnTodo(await Todo.findByIdAndRemove(id))

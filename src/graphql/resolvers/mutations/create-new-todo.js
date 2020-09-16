@@ -1,6 +1,6 @@
 import { returnTodo } from '../../../database/utils/utils'
 import { pubsub } from '../../../server/pubsub'
-import { TODO_ADDED } from '../iterators'
+import { TODO_ADDED } from '../events'
 
 export const createNewTodo = async (
   root,
