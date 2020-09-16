@@ -1,4 +1,6 @@
 import { returnTodo } from '../../../database/utils/utils'
+import { pubsub } from '../../../server/pubsub'
+import { TODO_ADDED } from '../iterators'
 
 export const createNewTodo = async (
   root,
@@ -12,6 +14,12 @@ export const createNewTodo = async (
     description,
     priority,
     completed,
+  })
+  pubsub.publish(TODO_ADDED, {
+    todoAdded: {
+      ...newTodo,
+      __typename: 'Todo',
+    },
   })
   return returnTodo(newTodo)
 }

@@ -24,9 +24,11 @@ input UpdateTodoStatus {
   completed: Boolean!
 }
 
+scalar Date
+
 type Mutation {
   """
-  Creates a new todo item
+  Creates a new todo
   """
   createNewTodo(TodoInfo: NewTodo!): Todo!
   """
@@ -43,8 +45,6 @@ type Mutation {
   deleteTodo(id: String!): Todo
 }
 
-scalar Date
-
 type Query {
   """
   Gets the current todos
@@ -53,7 +53,16 @@ type Query {
 }
 
 type Subscription {
+  """
+  Subscribe to updates todos being added
+  """
   todoAdded: Todo
+  """
+  Subscribe to updates todos being deleted
+  """
   todoDeleted: Todo
-  todoEdited: Todo
+  """
+  Subscribe to updates todos being updated
+  """
+  todoUpdated: Todo
 }

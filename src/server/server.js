@@ -1,14 +1,11 @@
 // import log from 'console';
 import express from 'express'
-import { PubSub } from 'apollo-server-express'
 import { createServer } from 'http'
 import { connectDB } from '../database'
 import createApolloServer from './createApolloServer'
 import { insertMockTodos } from '../database/mocks'
 import Todo from '../database/models/todo'
 import log from './logging'
-
-export const pubsub = new PubSub()
 
 export default async () => {
   const app = express()
@@ -22,7 +19,7 @@ export default async () => {
   apolloServer.applyMiddleware({ app })
   const httpServer = createServer(app)
 
-  // apolloServer.installSubscriptionHandlers(httpServer);
+  apolloServer.installSubscriptionHandlers(httpServer)
 
   return { httpServer }
 }
