@@ -31,8 +31,8 @@ describe('getTodoLoader tests', () => {
     expect.assertions(1)
     return Promise.all(
       mockTodos.map(async (todo) => {
-        const returnedUser = await loaders.getTodosLoader.load(todo.id)
-        expect(returnTodo(returnedUser)).toEqual(returnTodo(todo))
+        const returnedTodo = await loaders.getTodosLoader.load(todo.id)
+        expect(returnTodo(returnedTodo)).toEqual(returnTodo(todo))
       }),
     )
   })
