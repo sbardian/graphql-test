@@ -35,6 +35,36 @@ describe('updateTodo tests', () => {
       'new description test',
     )
   })
+  it('Should update a todo priority', async () => {
+    await updateTodo(
+      'root',
+      {
+        TodoInfo: {
+          id: toUpdate.id,
+          priority: 10,
+        },
+      },
+      { models: { Todo } },
+    )
+    expect((await Todo.findById(toUpdate.id)).priority).toEqual(10)
+  })
+  it('Should update a todo priority and description', async () => {
+    await updateTodo(
+      'root',
+      {
+        TodoInfo: {
+          id: toUpdate.id,
+          description: 'new description test',
+          priority: 10,
+        },
+      },
+      { models: { Todo } },
+    )
+    expect((await Todo.findById(toUpdate.id)).priority).toEqual(10)
+    expect((await Todo.findById(toUpdate.id)).description).toEqual(
+      'new description test',
+    )
+  })
   it('Should return an error', async () => {
     expect.assertions(1)
     try {
