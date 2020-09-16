@@ -2,7 +2,7 @@
 import express from 'express'
 import { createServer } from 'http'
 import { connectDB } from '../database'
-import createApolloServer from './createApolloServer'
+import createApolloServer from './create-apollo-server'
 import { insertMockTodos } from '../database/mocks'
 import Todo from '../database/models/todo'
 import log from './logging'

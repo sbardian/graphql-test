@@ -1,4 +1,4 @@
-import { getTodosLoader } from './getTodosLoader'
+import { getTodosLoader } from './get-todos-loader'
 import Todo from '../../database/models/todo'
 
 export default () => ({

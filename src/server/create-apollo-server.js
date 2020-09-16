@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express'
 import Todo from '../database/models/todo'
-import createLoaders from '../graphql/loaders/createLoaders'
+import createLoaders from '../graphql/loaders/create-loaders'
 import schema from '../graphql/schema'
 import log from './logging'
 
