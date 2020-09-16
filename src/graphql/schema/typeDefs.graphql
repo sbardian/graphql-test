@@ -1,0 +1,59 @@
+type Todo {
+  id: String
+  description: String
+  priority: Int
+  completed: Boolean
+  created_at: Date
+  updated_at: Date
+}
+
+input NewTodo {
+  description: String!
+  priority: Int
+  completed: Boolean!
+}
+
+input UpdateTodo {
+  id: String!
+  description: String
+  priority: Int
+}
+
+input UpdateTodoStatus {
+  id: String!
+  completed: Boolean!
+}
+
+type Mutation {
+  """
+  Creates a new todo item
+  """
+  createNewTodo(TodoInfo: NewTodo!): Todo!
+  """
+  Updates a todo description and/or priority
+  """
+  updateTodo(TodoInfo: UpdateTodo!): Todo
+  """
+  Update a todo completed status
+  """
+  updateTodoStatus(TodoInfo: UpdateTodoStatus!): Todo
+  """
+  Delete a todo
+  """
+  deleteTodo(id: String!): Todo
+}
+
+scalar Date
+
+type Query {
+  """
+  Gets the current todos
+  """
+  getTodos: [Todo]
+}
+
+type Subscription {
+  todoAdded: Todo
+  todoDeleted: Todo
+  todoEdited: Todo
+}
