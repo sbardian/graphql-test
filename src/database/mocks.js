@@ -2,9 +2,9 @@ import faker from 'faker'
 
 faker.seed(1337)
 
-export const insertMockTodos = (count) =>
+export const insertMockTodos = (count, completed = false) =>
   Array.from(Array(count), () => ({
     description: faker.lorem.sentence(),
-    completed: false,
+    completed,
     priority: 1,
   }))
