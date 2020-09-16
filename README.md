@@ -86,4 +86,48 @@ mutation create {
     updatedAt
   }
 }
+
+subscription addedSub {
+  todoAdded {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+subscription deletedSub {
+  todoDeleted {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+subscription updatedSub {
+  todoUpdated {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+subscription updatedStatusSub {
+  todoStatusUpdated {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 ```
