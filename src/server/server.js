@@ -11,8 +11,10 @@ export default async () => {
   const app = express()
   await connectDB()
 
-  Todo.insertMany(insertMockTodos(10))
-  log.info('Records inserted into DB')
+  if (process.env.NODE_ENV !== 'test') {
+    Todo.insertMany(insertMockTodos(10))
+    log.info('Records inserted into DB')
+  }
 
   const apolloServer = createApolloServer()
 
