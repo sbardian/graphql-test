@@ -7,6 +7,9 @@ export const updateTodoStatus = async (
   { TodoInfo: { id, completed } },
   { models: { Todo } },
 ) => {
+  if (typeof completed !== 'boolean') {
+    throw new Error(`Completed must be a boolean value (true/false)`)
+  }
   const todoStatusUpdated = returnTodo(
     await Todo.findByIdAndUpdate(id, { completed }, { new: true }),
   )
