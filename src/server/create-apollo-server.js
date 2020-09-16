@@ -32,12 +32,6 @@ export default () =>
       log.error(err)
       return err
     },
-    playground: {
-      settings: {
-        // temp fix for prismagraphql/graphql-playground#790
-        'editor.cursorShape': 'line',
-      },
-    },
     subscriptions: {
       path: '/subscriptions',
       onConnect: (connectionParams) => {
