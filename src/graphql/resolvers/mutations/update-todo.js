@@ -8,7 +8,7 @@ export const updateTodo = async (
   { models: { Todo } },
 ) => {
   let updatedTodo
-  if (priority <= 0) {
+  if (!priority >= 1 && priority !== null) {
     throw new Error(`If provided priority must be greater than or equal to one`)
   }
   if (!description && priority) {
