@@ -8,6 +8,9 @@ export const updateTodo = async (
   { models: { Todo } },
 ) => {
   let updatedTodo
+  if (priority <= 0) {
+    throw new Error(`If provided priority must be greater than or equal to one`)
+  }
   if (!description && priority) {
     updatedTodo = returnTodo(
       await Todo.findByIdAndUpdate(id, { priority }, { new: true }),
