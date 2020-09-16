@@ -3,8 +3,8 @@ type Todo {
   description: String
   priority: Int
   completed: Boolean
-  created_at: Date
-  updated_at: Date
+  createdAt: Date
+  updatedAt: Date
 }
 
 input NewTodo {
@@ -27,7 +27,7 @@ input UpdateTodoStatus {
 input OrderByInput {
   priority: SortOrder
   description: SortOrder
-  created_at: SortOrder
+  createdAt: SortOrder
 }
 
 scalar Date
@@ -68,9 +68,9 @@ type Query {
   Gets the current todos.
 
   orderBy: Expects an array of objects, order of orderBy is respected.
-  For example `[{ priority: ASC }, { description: DESC }, { created_at: ASC}]`
+  For example `[{ priority: ASC }, { description: DESC }, { createdAt: ASC}]`
   will first order by `priority` (ASC), `description` (DESC),
-  and finally `created_at` (ASC).
+  and finally `createdAt` (ASC).
 
   completed: Expects a boolean.  Will filter todos based on their completed status.
   """

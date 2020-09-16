@@ -4,7 +4,7 @@ export const returnTodo = (todo) => {
     description: todo.description,
     completed: todo.completed,
     priority: todo.priority,
-    created_at: todo.created_at,
-    updated_at: todo.updated_at,
+    createdAt: todo.createdAt,
+    updatedAt: todo.updatedAt,
   }
 }

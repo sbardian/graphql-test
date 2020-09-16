@@ -31,13 +31,13 @@ http://localhost:9999/graphql
 
 ```
 query gettodos {
-  getTodos(orderBy: [{ priority: ASC }, { description: DESC }, { created_at: ASC }], completed: false) {
+  getTodos(orderBy: [{ priority: ASC }, { description: DESC }, { createdAt: ASC }], completed: false) {
     id
     description
     priority
     completed
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 }
 
@@ -49,8 +49,8 @@ mutation updateStatus {
     description
     priority
     completed
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 }
 
@@ -60,8 +60,8 @@ mutation updateTodo {
     description
     priority
     completed
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 }
 
@@ -71,8 +71,8 @@ mutation delete {
     description
     priority
     completed
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 }
 
@@ -82,8 +82,8 @@ mutation create {
     description
     priority
     completed
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 }
 ```

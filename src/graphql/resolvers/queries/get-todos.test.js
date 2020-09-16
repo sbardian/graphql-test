@@ -89,18 +89,18 @@ describe('getTodos test', () => {
         .description,
     )
   })
-  it('Returns todos with completed true, and sorted by created_at', async () => {
+  it('Returns todos with completed true, and sorted by createdAt', async () => {
     const todoResults = await getTodos(
       'root',
-      { orderBy: [{ created_at: 'ASC' }], completed: true },
+      { orderBy: [{ createdAt: 'ASC' }], completed: true },
       {
         loaders: { getTodosLoader: loaders.getTodosLoader },
         models: { Todo },
       },
     )
     const results = await Promise.all(todoResults.map((result) => result))
-    expect(results.map((result) => returnTodo(result))[0].created_at).toEqual(
-      actualTrueTodos.sort((a, b) => a.created_at - b.created_at)[0].created_at,
+    expect(results.map((result) => returnTodo(result))[0].createdAt).toEqual(
+      actualTrueTodos.sort((a, b) => a.createdAt - b.createdAt)[0].createdAt,
     )
   })
 })

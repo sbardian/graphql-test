@@ -18,8 +18,8 @@ const createOrderBy = (orderBy = []) => {
         return ['priority', orderByInput[field]]
       case 'description':
         return ['description', orderByInput[field]]
-      case 'created_at':
-        return ['created_at', orderByInput[field]]
+      case 'createdAt':
+        return ['createdAt', orderByInput[field]]
       default:
         break
     }

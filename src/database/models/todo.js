@@ -8,10 +8,10 @@ const TodoSchema = new mongoose.Schema(
     },
     completed: Boolean,
     priority: Number,
-    created_at: Date,
-    updated_at: Date,
+    createdAt: Date,
+    updatedAt: Date,
   },
-  { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } },
+  { timestamps: true },
 )
 
 const Todo = mongoose.model('Todo', TodoSchema)
