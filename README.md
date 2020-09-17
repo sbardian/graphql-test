@@ -1,58 +1,133 @@
-# MadeByCodera GraphQL Test
-
 ## Description
 
-You are tasked with writing the GraphQL api for a new Todo List mobile app.
+Todos GraphQL API
 
-### Todo GraphQL Type
-The structure of the Todo GraphQL Type according to the frontend developer should look like the following:
+### Environment Variables
 
-Field        | Data Type     | Description
------------- | ------------- | -------------
-id           | UUID          | Unique identifier for the todo.
-description  | String        | Describes what the todo is.
-createdAt    | Date          | Tells us when the todo was created. Defaults to current datetime.
-completed    | Boolean       | Indicates if the todo is complete. Defaults to false.
-priority     | Int           | 1 is the highest priority. Defaults to 1.
+- PORT: configure the server at a specific port.
+- If there is no port environment variable the server will use port `9999`
 
-### Todo GraphQL Query and Mutations
-And the frontend developer is counting on you to implement the following 5 methods under the GraphQL api endpoint:
-1. **List Todos** - Query - Retrieved todos can be sorted by the `priority`, `createdAt`, or `description` fields in ascending or descending order. By default the todos are unsorted. In addition, the todos can be filtered by the `completed` field.
-2. **Create todo** - Mutation - `description` is required. `priority` is optional and if not provided should default to 1. The rest of the fields: `id`, `createdAt`, and `completed` should have defaults supplied for them as noted in the Todo GraphQL Type mentioned above.
-3. **Update todo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
-4. **Mark todo complete** - Mutation - Should update a todo's `complete` field to `true` based on the `id` provided in the request.
-4. **Delete todo** - Mutation - Should delete a todo based on the `id` provided in the request.
+### Data
 
-### Documentation
+- data is in an in-memory mongodb database.
+- When the server is started it will populate the database with 10 mock todo
+  items.
 
-The front end developer would also like a little bit of documentation to help him use the api. The easiest way to provide documentation is to add comments to each query, mutation, and type that is defined in the GraphQL schema. The following multi-line comments example highlights how you should be declaring comments in the query, mutation, or type definitions:
+### Accessing GraphQL Playground
+
+- use the following url to access the GraphQL Playground once the server is
+  started.
+
+> Update the port if you provided a PORT environment variable.
 
 ```
-"""
-<my comments go here>
-"""
+http://localhost:9999/graphql
 ```
 
-This will make it very easy for the frontend developer to see them when inspecting the running GraphQL server using [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/features/graphql-playground/)
+### Example Queries
 
-As demonstrated in the following screenshot
+> Be sure to update the `id`'s in the queries that require them. You can get
+> `id`s by using the first `gettodos` query.
 
-[![graphql-playground-example.png](https://i.postimg.cc/rw6HMzmt/graphql-playground-example.png)](https://postimg.cc/VdRgFfXY)
+```
+query gettodos {
+  getTodos(orderBy: [{ priority: ASC }, { description: DESC }, { createdAt: ASC }], completed: false) {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-### Testing
+mutation updateStatus {
+  updateTodoStatus(
+    TodoInfo: { id: "5f61a86d66596996a87e6007", completed: true }
+  ) {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-The front end developer would also like to see examples of using this GraphQL api to help him make his own requests, as well as show to him that the api will work as he expects. You may do this however you see fit. The simplest way possible would be to write variations of query and mutation requests in GraphQL Playground and then click `COPY CURL`, pasting the curl command into a shell script that you could provide at the root of the repo called `test.sh`.
+mutation updateTodo {
+  updateTodo(TodoInfo: { id: "5f61a8215bda4c9668fa1b73", priority: 10 }) {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-[![graphql-test-copy-curl-example.png](https://i.postimg.cc/8c0vxzyb/graphql-test-copy-curl-example.png)](https://postimg.cc/BP2tK4f8)
+mutation delete {
+  deleteTodo(id: "5f61934e64257e89be72b3c9") {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-## Instructions
-1. Fork this repository. Do all of your work on your personal fork. Then create a new pull request on your personal fork
-2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
-3. You can use whatever data structure you are most comfortable with for storing the data such as in-memory, MySQL, Postgres, SQLite, MongoDB, etc... . Using Postgres is preferred and considered a plus, since that is what we use currently.
-4. This repo should be an npm project such that we can install the dependencies that you define for the server in order to run it using Node.
+mutation create {
+  createNewTodo(TodoInfo: { description: "aba", completed: false }) {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-Here is an example of creating a pull request from a fork of a repository:
-[![pull-request-example.png](https://i.postimg.cc/QCgrr53S/pull-request-example.png)](https://postimg.cc/RJ0Y7Wqn)
+subscription addedSub {
+  todoAdded {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
 
-## NOTE
-If you are not storing the data in-memory, please commit a sql dump file of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be **DISCARDED** if you **DO NOT** commit a sql dump file for your implementation, if it uses a database.
+subscription deletedSub {
+  todoDeleted {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+subscription updatedSub {
+  todoUpdated {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+subscription updatedStatusSub {
+  todoStatusUpdated {
+    id
+    description
+    priority
+    completed
+    createdAt
+    updatedAt
+  }
+}
+```

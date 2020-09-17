@@ -1,0 +1,97 @@
+type Todo {
+  id: String
+  description: String
+  priority: Int
+  completed: Boolean
+  createdAt: Date
+  updatedAt: Date
+}
+
+input NewTodo {
+  description: String!
+  priority: Int
+  completed: Boolean!
+}
+
+input UpdateTodo {
+  id: String!
+  description: String
+  priority: Int
+}
+
+input UpdateTodoStatus {
+  id: String!
+  completed: Boolean!
+}
+
+input OrderByInput {
+  priority: SortOrder
+  description: SortOrder
+  createdAt: SortOrder
+}
+
+scalar Date
+
+enum SortOrder {
+  """
+  ascending order (0-9, A-Z)
+  """
+  ASC
+
+  """
+  descending order (Z-A, 9-0)
+  """
+  DESC
+}
+
+type Mutation {
+  """
+  Creates a new todo
+  """
+  createNewTodo(TodoInfo: NewTodo!): Todo!
+  """
+  Updates a todo description and/or priority
+  """
+  updateTodo(TodoInfo: UpdateTodo!): Todo
+  """
+  Update a todo completed status
+  """
+  updateTodoStatus(TodoInfo: UpdateTodoStatus!): Todo
+  """
+  Delete a todo
+  """
+  deleteTodo(id: String!): Todo
+}
+
+type Query {
+  """
+  Gets the current todos.
+
+  orderBy: Expects an array of objects, order of orderBy is respected.
+  For example `[{ priority: ASC }, { description: DESC }, { createdAt: ASC}]`
+  will first order by `priority` (ASC), `description` (DESC),
+  and finally `createdAt` (ASC).
+
+  completed: Expects a boolean.  Will filter todos based on their completed status.
+  """
+  getTodos(orderBy: [OrderByInput], completed: Boolean): [Todo]
+}
+
+type Subscription {
+  """
+  Subscribe to todos being added
+  """
+  todoAdded: Todo
+  """
+  Subscribe to todos being deleted
+  """
+  todoDeleted: Todo
+  """
+  Subscribe to todos updates
+  """
+  todoUpdated: Todo
+  """
+  Subscribe to todos status updates
+  """
+  todoStatusUpdated: Todo
+}
